@@ -1,0 +1,40 @@
+- set_fact: role_name=basics
+
+##################################################
+### Basic system packages and firewall config
+
+
+- name: Update Yum
+  yum: name=* state=latest
+
+- name: Install basic packages
+  yum: pkg={{ item }} state=installed
+  with_items:
+   - yum-utils
+   - vim
+   - git
+   - curl
+   - wget
+   - vim
+   - man
+   - zip
+   - unzip
+   - epel-release
+   - firewalld
+- name: Set up firewall
+  shell: systemctl enable firewalld
+
+- name: Start the firewall
+  shell: systemctl start firewalld
+
+- name: Allow public to port 22 in firewall
+  shell: firewall-cmd --zone=public --add-port=22/tcp --permanent
+
+- name: Reload firewall
+  shell: firewall-cmd --reload
+
+- name: Disbale SELINUX temporarily
+  shell: setenforce 0
+
+- name: Disbale SELINUX
+  shell: sed -i 's/enforcing/disabled/g' /etc/selinux/config /etc/selinux/config

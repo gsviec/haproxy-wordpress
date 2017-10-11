@@ -1,0 +1,18 @@
+- hosts: web
+  become: true
+  roles:
+  - basics
+  - nginx
+  - php
+
+- hosts: db
+  become: true
+  roles:
+  #- basics
+  - mariadb
+
+- hosts: haproxy
+  become: true
+  roles:
+  - basics
+  - haproxy

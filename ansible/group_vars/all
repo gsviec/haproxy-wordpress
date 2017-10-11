@@ -1,0 +1,10 @@
+# These are the WordPress database settings
+wp_db_name: demo_loadbanlancer_wp_gsviec 
+wp_db_user: gsviec
+wp_db_password: gsviec
+wp_db_host: 34.207.202.109
+
+# You shouldn't need to change this.
+mysql_port: 3306
+
+haproxy_www_public: http://34.207.217.19
