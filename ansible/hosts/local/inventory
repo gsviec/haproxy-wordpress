@@ -1,0 +1,5 @@
+#192.168.1.10 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+web01 ansible_ssh_host=34.228.12.148 ansible_ssh_port=22
+[web]
+web01
+
